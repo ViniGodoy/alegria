@@ -23,7 +23,7 @@ package com.alegria2d.exception;
 import java.util.Calendar;
 
 /**
- * Basic alegria runtime exception class. All Alegria exceptions include a timestamp. You may read it by using the
+ * Basic alegria exception class. All Alegria exceptions include a timestamp. You may read it by using the
  * {@link #getTimeStamp()} and {@link #getWhen()} methods. All Alegria exceptions include a timestamp. You may read it
  * by using the {@link #getTimeStamp()} and {@link #getWhen()} methods. *
  * 
