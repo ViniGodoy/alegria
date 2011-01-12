@@ -27,3 +27,8 @@ Alegria is divided into three main layers:
 ========== Dependencies ==========
 
 Alegria is built on top of LWJGL 2.6 and Java 6. This API uses Slick-Utils.jar.
+
+== More information ==
+
+For more information, see project docs folder. 
+You may also access Alegria website at http:://alegria2d.com
