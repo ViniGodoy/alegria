@@ -29,7 +29,7 @@ import java.util.Calendar;
  * 
  * @author Vinicius G. Mendonca
  */
-public class AlegriaRuntimeException extends Exception {   
+public class AlegriaRuntimeException extends RuntimeException {   
    private static final long serialVersionUID = -4479684697326401294L;
    
    private long timestamp;
