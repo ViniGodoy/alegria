@@ -26,11 +26,14 @@ import java.util.Calendar;
 
 /**
  * AlegriaRuntimeException is the superclass of those exceptions that can be thrown during the normal operation of 
- * Alegria. 
+ * Alegria. All Alegria exceptions include a timestamp. You may read it by using the
+ * {@link #getTimeStamp()} and {@link #getWhen()} methods.
  * 
  * @author Vinicius G. Mendonca
  */
 public class AlegriaRuntimeException extends RuntimeException {
+   private static final long serialVersionUID = 4152411078016716387L;
+   
    private long timestamp;
 
    public AlegriaRuntimeException() {

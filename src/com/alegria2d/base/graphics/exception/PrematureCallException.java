@@ -29,6 +29,8 @@ import com.alegria2d.exception.AlegriaRuntimeException;
  * @author Vinicius G. Mendonca
  */
 public class PrematureCallException extends AlegriaRuntimeException {
+   private static final long serialVersionUID = 5459082218135994809L;
+
    public PrematureCallException() {
       this("This method must be called after init()");
    }

@@ -25,7 +25,14 @@ package com.alegria2d.base.graphics.exception;
 import com.alegria2d.base.graphics.DisplayMode;
 import com.alegria2d.exception.AlegriaException;
 
+/**
+ * This exception is called when a change to the display mode was attempted, but failed.
+ * 
+ * @author Vinicius G. Mendonca
+ */
 public class UnableToChangeDisplayModeException extends AlegriaException {
+   private static final long serialVersionUID = 4575081153155799406L;
+   
    private DisplayMode desired;
    
    public UnableToChangeDisplayModeException(DisplayMode desired, Throwable cause)

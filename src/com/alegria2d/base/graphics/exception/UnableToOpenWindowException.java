@@ -24,7 +24,13 @@ package com.alegria2d.base.graphics.exception;
 
 import com.alegria2d.exception.AlegriaException;
 
+/**
+ * This exception occurs when was impossible to open the Alegria main window.
+ * @author Vinicius G. Mendonca
+ */
 public class UnableToOpenWindowException extends AlegriaException {
+   private static final long serialVersionUID = -6144323433655715502L;
+
    public UnableToOpenWindowException(Throwable cause)
    {
       super("Unable to open window.", cause);
