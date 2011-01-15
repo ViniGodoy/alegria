@@ -20,27 +20,21 @@
  */
 package com.alegria2d.exception;
 
-import java.util.Calendar;
 
 /**
- * Basic alegria runtime exception class. All Alegria exceptions include a timestamp. You may read it by using the
- * {@link #getTimeStamp()} and {@link #getWhen()} methods. All Alegria exceptions include a timestamp. You may read it
- * by using the {@link #getTimeStamp()} and {@link #getWhen()} methods. *
+ * Basic alegria runtime exception class. 
  * 
  * @author Vinicius G. Mendonca
  */
 public class AlegriaRuntimeException extends RuntimeException {   
    private static final long serialVersionUID = -4479684697326401294L;
    
-   private long timestamp;
-
    /**
     * Constructs a new exception with <code>null</code> as its detail message. The cause is not initialized, and may
     * subsequently be initialized by a call to {@link #initCause}.
     */
    public AlegriaRuntimeException() {
       super();
-      this.timestamp = System.currentTimeMillis();
    }
    
    /**
@@ -52,7 +46,6 @@ public class AlegriaRuntimeException extends RuntimeException {
     */
    public AlegriaRuntimeException(String message) {
       super(message);
-      this.timestamp = System.currentTimeMillis();
    }
    /**
     * Constructs a new exception with the specified detail message and cause.
@@ -66,7 +59,6 @@ public class AlegriaRuntimeException extends RuntimeException {
     */
    public AlegriaRuntimeException(String message, Throwable cause) {
       super(message, cause);
-      this.timestamp = System.currentTimeMillis();
    }
 
    /**
@@ -80,28 +72,5 @@ public class AlegriaRuntimeException extends RuntimeException {
     */
    public AlegriaRuntimeException(Throwable cause) {
       super(cause);
-      this.timestamp = System.currentTimeMillis();
-   }
-
-   /**
-    * Returns the exception timestamp. 
-    * 
-    * @return the difference, measured in milliseconds, between the current time and midnight, January 1, 1970 UTC.
-    * 
-    * @see #getWhen()
-    * @see System#currentTimeMillis()
-    */
-   public long getTimeStamp() {
-      return timestamp;
-   }
-
-   /**
-    * @return A Calendar, built using this exception timestamp.
-    * @see #getTimeStamp()
-    */
-   public Calendar getWhen() {
-      Calendar cal = Calendar.getInstance();
-      cal.setTimeInMillis(timestamp);
-      return cal;
    }
 }
