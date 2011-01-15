@@ -117,20 +117,22 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
 
    /**
     * Changes the size of this vector in the x axis.
+    * 
     * @param x The new x.
     */
    public void setX(float x) {
       this.x = x;
    }
-   
+
    /**
     * Changes the size of this vector in the x axis.
+    * 
     * @param x The new x.
     */
    public void setY(float y) {
       this.y = y;
    }
-   
+
    /**
     * @return the length of this vector in the x axis.
     */
@@ -251,7 +253,8 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    }
 
    /**
-    * Returns a perpendicular vector. This function is equivalent to calling {@link #rotate(float)} with 90 degrees, but much faster.
+    * Returns a perpendicular vector. This function is equivalent to calling {@link #rotate(float)} with 90 degrees, but
+    * much faster.
     * 
     * @return a perpendicular vector (rotated 90º degrees).
     */
@@ -266,18 +269,18 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     */
    public Vector2D normalizeMe() {
       float sizeSqr = getSizeSqr();
-      
+
       if (sizeSqr == 0) {
-         //TODO add log message here
+         // TODO add log message here
          return this;
       }
-      
-      //Already a normal vector
+
+      // Already a normal vector
       if (sizeSqr == 1) {
          return this;
       }
-         
-      return divMe((float)sqrt(sizeSqr));
+
+      return divMe((float) sqrt(sizeSqr));
    }
 
    /**
@@ -376,6 +379,44 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     */
    public Vector2D multiply(float scalar) {
       return clone().multiplyMe(scalar);
+   }
+
+   /**
+    * Multiply this vector by the given matrix. This vector will be considered as a line vector in homogeneous
+    * coordinate system.
+    * 
+    * <pre>
+    *             [a b c]    
+    * [x y 1]  x  [d e f]
+    *             [g h k]
+    * </pre>
+    * 
+    * @param matrix The matrix to multiply
+    * @return This vector, after transformation.
+    */
+   public Vector2D multiplyMe(Matrix3D matrix) {
+      float newX = x * matrix.a() + y * matrix.d() + matrix.g();
+      float newY = x * matrix.b() + y * matrix.e() + matrix.h();
+      x = newX;
+      y = newY;
+      return this;
+   }
+
+   /**
+    * Multiply this vector by the given matrix. This vector will be considered as a line vector in homogeneous
+    * coordinate system.
+    * 
+    * <pre>
+    *             [a b c]    
+    * [x y 1]  x  [d e f]
+    *             [g h k]
+    * </pre>
+    * 
+    * @param matrix The matrix to multiply
+    * @return A new vector
+    */
+   public Vector2D multiply(Matrix3D matrix) {
+      return clone().multiply(matrix);
    }
 
    /**
@@ -500,7 +541,9 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    /**
     * Returns the value at the given index.
     * 
-    * @param index 0 for x, 1 for y.
+    * @param index 0 for x, 1 for y. If 1 is supplied, it will return 1 value for z coordinate, assuming that user wants
+    *           an homogeneous system coordinate.
+    *           
     * @return The value at the given index.
     */
    public float getAt(int index) {
@@ -510,13 +553,17 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
       if (index == 1) {
          return y;
       }
+      if (index == 2) {
+         //TODO Add an info log here.
+         return 1;
+      }
       throw new ArrayIndexOutOfBoundsException();
    }
 
    /**
     * Puts the value at the given index.
     * 
-    * @param index 0 for x, 1 for y.
+    * @param index 0 for x, 1 for y. Coordinates in index 2 will be discarded.
     * @param value The value to put.
     * @return The value.
     */
@@ -525,7 +572,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
          x = value;
       } else if (index == 1) {
          y = value;
-      } else {
+      } else if (index != 2) {
          throw new ArrayIndexOutOfBoundsException();
       }
 
@@ -533,12 +580,21 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    }
 
    /**
-    * Convert this method to a primitive float array.
+    * Convert this vector to a primitive float array.
     * 
     * @return A primitive float array filled with x and y values.
     */
    public float[] toArray() {
       return new float[] { x, y };
+   }
+   
+   /**
+    * Convert this vector to a primitive float array in an homogeneous coordinate system.
+    * 
+    * @return A primitive float array filled with x and y values, and 1 for z value.
+    */
+   public float[] to3DArray() {
+      return new float[] {x, y, 1};
    }
 
    /**
