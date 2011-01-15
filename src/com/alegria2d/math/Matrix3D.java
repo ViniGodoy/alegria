@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2011 Alegria contributors
+ * 
+ * See CREDITS for information about contributors.
+ * 
+ * http://alegria2d.com
+ * 
+ * This file is part of Alegria 2D Java Game Framework.
+ * 
+ * Alegria is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * Alegria is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+ * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License along with Alegria. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
 package com.alegria2d.math;
 
 /**
@@ -14,13 +34,18 @@ package com.alegria2d.math;
  * [g h k]
  * </pre>
  * 
- * These methods are named {@link #a()}, {@link #b()}, {@link #c()}, {@link #d()}, {@link #e()}, {@link #f()},
- * {@link #g()}, {@link #h()} and {@link #k()}. The omission of the "get" prefix is intentional: the intention is to allow
- * a much clearer formula writing.
+ * These methods are named {@link #getA()}, {@link #getB()}, {@link #getC()}, {@link #getD()}, {@link #getE()}, {@link #getF()},
+ * {@link #getG()}, {@link #getH()} and {@link #getK()}. 
+ * <p>
  * 
  * @author Vinicius G. Mendonca
  */
 public class Matrix3D implements Cloneable {
+
+   /**
+    * The array that represents this matrix. The A is an upper case letter since its following the mathematical
+    * convention.
+    */
    private float A[][] = null;
 
    /**
@@ -37,9 +62,11 @@ public class Matrix3D implements Cloneable {
     */
    public Matrix3D(float[][] matrix) {
       A = new float[3][3];
-      for (int i = 0; i < 3; i++)
-         for (int j = 0; j < 3; j++)
+      for (int i = 0; i < 3; i++) {
+         for (int j = 0; j < 3; j++) {
             A[i][j] = matrix[i][j];
+         }
+      }
    }
 
    /**
@@ -89,8 +116,8 @@ public class Matrix3D implements Cloneable {
     */
    public static Matrix3D newIdentity() {
       return new Matrix3D(1, 0, 0,
-                         0, 1, 0,
-                         0, 0, 1);
+                          0, 1, 0,
+                          0, 0, 1);
    }
 
    /**
@@ -128,7 +155,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[0][0] element.
     */
-   public float a() {
+   public float getA() {
       return A[0][0];
    }
 
@@ -143,7 +170,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[0][1] element.
     */
-   public float b() {
+   public float getB() {
       return A[0][1];
    }
 
@@ -158,7 +185,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[0][2] element.
     */
-   public float c() {
+   public float getC() {
       return A[0][2];
    }
 
@@ -173,7 +200,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[1][0] element.
     */
-   public float d() {
+   public float getD() {
       return A[1][0];
    }
 
@@ -188,7 +215,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[1][1] element.
     */
-   public float e() {
+   public float getE() {
       return A[1][1];
    }
 
@@ -203,7 +230,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[1][1] element.
     */
-   public float f() {
+   public float getF() {
       return A[1][2];
    }
 
@@ -218,7 +245,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[2][0] element.
     */
-   public float g() {
+   public float getG() {
       return A[2][0];
    }
 
@@ -233,7 +260,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[2][1] element.
     */
-   public float h() {
+   public float getH() {
       return A[2][1];
    }
 
@@ -248,7 +275,7 @@ public class Matrix3D implements Cloneable {
     * 
     * @return the A[2][2] element.
     */
-   public float k() {
+   public float getK() {
       return A[3][2];
    }
 
@@ -363,8 +390,8 @@ public class Matrix3D implements Cloneable {
       float y = vector.getY();
 
       return new Vector2D(
-            x * a() + y * b() + c(),
-            x * d() + y * e() + f());
+            x * getA() + y * getB() + getC(),
+            x * getD() + y * getE() + getF());
    }
 
    /**
@@ -398,9 +425,9 @@ public class Matrix3D implements Cloneable {
     * @return the determinant of this matrix.
     */
    public float getDeterminant() {
-      return a() * (e() * k() - f() * h()) +
-             b() * (f() * g() - k() * d()) +
-             c() * (d() * h() - e() * g());
+      return getA() * (getE() * getK() - getF() * getH()) +
+             getB() * (getF() * getG() - getK() * getD()) +
+             getC() * (getD() * getH() - getE() * getG());
    }
 
    /**
@@ -445,17 +472,17 @@ public class Matrix3D implements Cloneable {
       Matrix3D inverse = new Matrix3D();
       inverse.A = new float[3][3];
 
-      inverse.A[0][0] = e() * k() - f() * h();
-      inverse.A[0][1] = c() * h() - b() * k();
-      inverse.A[0][2] = b() * f() - c() * e();
+      inverse.A[0][0] = getE() * getK() - getF() * getH();
+      inverse.A[0][1] = getC() * getH() - getB() * getK();
+      inverse.A[0][2] = getB() * getF() - getC() * getE();
 
-      inverse.A[1][0] = f() * g() - d() * k();
-      inverse.A[1][1] = a() * k() - c() * g();
-      inverse.A[1][2] = c() * d() - a() * f();
+      inverse.A[1][0] = getF() * getG() - getD() * getK();
+      inverse.A[1][1] = getA() * getK() - getC() * getG();
+      inverse.A[1][2] = getC() * getD() - getA() * getF();
 
-      inverse.A[2][0] = d() * h() - e() * g();
-      inverse.A[2][1] = b() * g() - a() * h();
-      inverse.A[2][2] = a() * e() - b() * d();
+      inverse.A[2][0] = getD() * getH() - getE() * getG();
+      inverse.A[2][1] = getB() * getG() - getA() * getH();
+      inverse.A[2][2] = getA() * getE() - getB() * getD();
       return inverse;
    }
 
@@ -480,9 +507,11 @@ public class Matrix3D implements Cloneable {
     */
    public Matrix3D transpose() {
       float[][] B = new float[3][3];
-      for (int i = 0; i < 3; i++)
-         for (int j = 0; j < 3; j++)
+      for (int i = 0; i < 3; i++) {
+         for (int j = 0; j < 3; j++) {
             B[i][j] = A[j][i];
+         }
+      }
 
       Matrix3D clone = new Matrix3D();
       clone.A = B;
@@ -553,7 +582,7 @@ public class Matrix3D implements Cloneable {
     */
    public MatrixRow getAt(int row) {
       if (row < 0 || row > 2)
-         throw new IndexOutOfBoundsException();      
+         throw new IndexOutOfBoundsException();
       return new MatrixRow(row);
    }
 
@@ -565,7 +594,6 @@ public class Matrix3D implements Cloneable {
    public class MatrixRow {
       private int row;
 
-      
       public MatrixRow(int row) {
          this.row = row;
       }
@@ -584,6 +612,7 @@ public class Matrix3D implements Cloneable {
 
       /**
        * Returns the value of this row that is in the given column.
+       * 
        * @param col The column.
        * @return The value.
        */
