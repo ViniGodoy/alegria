@@ -116,6 +116,22 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    }
 
    /**
+    * Changes the size of this vector in the x axis.
+    * @param x The new x.
+    */
+   public void setX(float x) {
+      this.x = x;
+   }
+   
+   /**
+    * Changes the size of this vector in the x axis.
+    * @param x The new x.
+    */
+   public void setY(float y) {
+      this.y = y;
+   }
+   
+   /**
     * @return the length of this vector in the x axis.
     */
    public float getX() {
@@ -235,7 +251,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    }
 
    /**
-    * Returns a perpendicular vector. This function is equivalent to rotate(90), but much faster.
+    * Returns a perpendicular vector. This function is equivalent to calling {@link #rotate(float)} with 90 degrees, but much faster.
     * 
     * @return a perpendicular vector (rotated 90º degrees).
     */
