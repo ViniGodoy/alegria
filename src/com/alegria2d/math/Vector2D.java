@@ -24,6 +24,7 @@ import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
+import com.alegria2d.exception.AlegriaRuntimeException;
 
 /**
  * Represents a vector in the 2D Cartesian coordinate space.
@@ -372,8 +373,9 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * @see #div(float)
     */
    public Vector2D divMe(float scalar) {
-      if (scalar == 0)
+      if (scalar == 0) {
          throw new DivideByZeroException();
+      }
 
       x /= scalar;
       y /= scalar;
@@ -475,7 +477,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
       try {
          return (Vector2D) super.clone();
       } catch (CloneNotSupportedException e) {
-         throw new RuntimeException(e);
+         throw new AlegriaRuntimeException(e);
       }
    }
 
