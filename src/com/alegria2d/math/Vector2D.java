@@ -395,8 +395,8 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * @return This vector, after transformation.
     */
    public Vector2D multiplyMe(Matrix3D matrix) {
-      float newX = x * matrix.a() + y * matrix.d() + matrix.g();
-      float newY = x * matrix.b() + y * matrix.e() + matrix.h();
+      float newX = x * matrix.getA() + y * matrix.getD() + matrix.getG();
+      float newY = x * matrix.getB() + y * matrix.getE() + matrix.getH();
       x = newX;
       y = newY;
       return this;
@@ -543,7 +543,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * 
     * @param index 0 for x, 1 for y. If 1 is supplied, it will return 1 value for z coordinate, assuming that user wants
     *           an homogeneous system coordinate.
-    *           
+    * 
     * @return The value at the given index.
     */
    public float getAt(int index) {
@@ -554,7 +554,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
          return y;
       }
       if (index == 2) {
-         //TODO Add an info log here.
+         // TODO Add an info log here.
          return 1;
       }
       throw new ArrayIndexOutOfBoundsException();
@@ -587,14 +587,14 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    public float[] toArray() {
       return new float[] { x, y };
    }
-   
+
    /**
     * Convert this vector to a primitive float array in an homogeneous coordinate system.
     * 
     * @return A primitive float array filled with x and y values, and 1 for z value.
     */
    public float[] to3DArray() {
-      return new float[] {x, y, 1};
+      return new float[] { x, y, 1 };
    }
 
    /**
