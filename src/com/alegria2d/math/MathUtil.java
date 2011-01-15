@@ -70,11 +70,11 @@ public class MathUtil {
     */
    public float angleBetween(Vector2D v1, Vector2D v2) {
       // Normalize the vectors, if needed.
-      if (v1.isNormal()) {
+      if (!v1.isNormal()) {
          v1 = v1.normalize();
       }
 
-      if (v2.isNormal()) {
+      if (!v2.isNormal()) {
          v2 = v2.normalize();
       }
 
