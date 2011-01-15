@@ -374,7 +374,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     */
    public Vector2D divMe(float scalar) {
       if (scalar == 0) {
-         throw new DivideByZeroException();
+         throw new ArithmeticException();
       }
 
       x /= scalar;
