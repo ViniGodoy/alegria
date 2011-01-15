@@ -26,8 +26,9 @@ package com.alegria2d.exception;
  * 
  * @author Vinicius G. Mendonca
  */
-public class DivideByZeroException extends MathException {
-   private static final long serialVersionUID = 1L;
+public class DivideByZeroException extends MathException {   
+
+   private static final long serialVersionUID = 1976586210979754143L;
 
    /**
     * Constructs a new divide by zero exception
