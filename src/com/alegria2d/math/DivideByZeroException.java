@@ -30,4 +30,7 @@ import com.alegria2d.exception.AlegriaRuntimeException;
 public class DivideByZeroException extends AlegriaRuntimeException {
    private static final long serialVersionUID = 1L;
 
+   public DivideByZeroException() {
+      super("Divide by zero.");
+   }
 }
