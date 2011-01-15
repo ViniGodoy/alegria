@@ -22,23 +22,43 @@ package com.alegria2d.exception;
 
 /**
  * Exception for mathematical problems.
+ * 
  * @author Vinicius G. Mendonca
  */
 public class MathException extends AlegriaRuntimeException {
-   private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = -7549196113034094158L;
 
+   /**
+    * Create a new MathException
+    */
    public MathException() {
       super();
    }
-   
+
+   /**
+    * Create a new MathException with the given message.
+    * 
+    * @param message The message.
+    */
    public MathException(String message) {
       super(message);
    }
-   
+
+   /**
+    * Create a new MathException with the given message and cause.
+    * 
+    * @param message The message.
+    * @param cause The cause
+    */
    public MathException(String message, Throwable cause) {
       super(message, cause);
    }
 
+   /**
+    * Create a new MathException with the given cause.
+    * 
+    * @param cause The cause
+    */
    public MathException(Throwable cause) {
       super(cause);
    }
