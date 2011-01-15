@@ -21,6 +21,7 @@
 package com.alegria2d.math;
 
 import static java.lang.Math.acos;
+import java.util.Random;
 
 /**
  * A simple utility class with a bunch of useful mathematical methods.
@@ -35,7 +36,7 @@ public class MathUtil {
     * @param size The maximum vector size.
     * @return The truncated vector
     */
-   public Vector2D truncate(Vector2D vector, float size) {
+   public static Vector2D truncate(Vector2D vector, float size) {
       return (vector.getSizeSqr() > size * size) ? vector.setSize(size) : vector;
    }
 
@@ -46,7 +47,7 @@ public class MathUtil {
     * @param p2 Vector 2
     * @return The distance.
     */
-   public float distance(Vector2D p1, Vector2D p2) {
+   public static float distance(Vector2D p1, Vector2D p2) {
       return p1.minus(p2).getSize();
    }
 
@@ -57,7 +58,7 @@ public class MathUtil {
     * @param p2 Vector 2
     * @return The squared distance.
     */
-   public float distanceSqr(Vector2D p1, Vector2D p2) {
+   public static float distanceSqr(Vector2D p1, Vector2D p2) {
       return p1.minus(p2).getSizeSqr();
    }
 
@@ -68,7 +69,7 @@ public class MathUtil {
     * @param v2 Vector 2
     * @return The angle between them.
     */
-   public float angleBetween(Vector2D v1, Vector2D v2) {
+   public static float angleBetween(Vector2D v1, Vector2D v2) {
       // Normalize the vectors, if needed.
       if (!v1.isNormal()) {
          v1 = v1.normalize();
@@ -91,7 +92,17 @@ public class MathUtil {
     * @param normal The surface normal
     * @return The reflected vector. 
     */
-   public Vector2D reflect(Vector2D ray, Vector2D normal) {
+   public static Vector2D reflect(Vector2D ray, Vector2D normal) {
       return ray.minus(normal.multiply(2 * ray.dot(normal)));
+   }
+   
+   /**
+    * Generates a new random number between 0.0 (inclusive) and 1.0 (inclusive).
+    * @param random The random number generator to use. 
+    * @return A random number between 0.0 (inclusive) and 1.0 (inclusive).
+    */
+   public static float nextFloatInclusive(Random random) {
+      float r = random.nextFloat();
+      return r == random.nextFloat() ? 1 : r;
    }
 }
