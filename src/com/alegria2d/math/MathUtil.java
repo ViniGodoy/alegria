@@ -30,6 +30,7 @@ import static java.lang.Math.acos;
 public class MathUtil {
    /**
     * Force this vector to have the given maximum size.
+    * 
     * @param vector The vector to truncate
     * @param size The maximum vector size.
     * @return The truncated vector
@@ -40,6 +41,7 @@ public class MathUtil {
 
    /**
     * Return the distance between two vectors representing points.
+    * 
     * @param p1 Vector 1
     * @param p2 Vector 2
     * @return The distance.
@@ -47,8 +49,10 @@ public class MathUtil {
    public float distance(Vector2D p1, Vector2D p2) {
       return p1.minus(p2).getSize();
    }
+
    /**
     * Return the squared distance between two vectors representing points.
+    * 
     * @param p1 Vector 1
     * @param p2 Vector 2
     * @return The squared distance.
@@ -56,27 +60,38 @@ public class MathUtil {
    public float distanceSqr(Vector2D p1, Vector2D p2) {
       return p1.minus(p2).getSizeSqr();
    }
-   
+
    /**
     * Calculate the angle between the two given vectors.
+    * 
     * @param v1 Vector 1
     * @param v2 Vector 2
     * @return The angle between them.
     */
    public float angleBetween(Vector2D v1, Vector2D v2) {
-      //Normalize the vectors, if needed.
+      // Normalize the vectors, if needed.
       if (v1.isNormal()) {
          v1 = v1.normalize();
       }
-      
+
       if (v2.isNormal()) {
          v2 = v2.normalize();
       }
 
-      float angPi = (float)acos(v1.dot(v2));
+      float angPi = (float) acos(v1.dot(v2));
 
       // side test
-      return (v1.getY() * v2.getX() > v1.getY() * v2.getY()) ? -angPi : angPi;      
+      return (v1.getY() * v2.getX() > v1.getY() * v2.getY()) ? -angPi : angPi;
    }
-   
+
+   /**
+    * Reflect the given ray vector, as if it collided with a surface, with the given normal.
+    * 
+    * @param ray The ray vector
+    * @param normal The surface normal
+    * @return The reflected vector. 
+    */
+   public Vector2D reflect(Vector2D ray, Vector2D normal) {
+      return ray.minus(normal.multiply(2 * ray.dot(normal)));
+   }
 }
