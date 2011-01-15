@@ -39,5 +39,5 @@ public interface ImageLoader {
     * @return The loaded image.
     * @throws IOException If a problem occurs while loading.
     */
-   public Image load(String format, InputStream source) throws IOException;
+   Image load(String format, InputStream source) throws IOException;
 }
