@@ -254,7 +254,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
 
    /**
     * Returns a perpendicular vector. This function is equivalent to calling {@link #rotate(float)} with 90 degrees, but
-    * much faster.
+    * much faster and precise.
     * 
     * @return a perpendicular vector (rotated 90º degrees).
     */
@@ -475,7 +475,8 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    }
 
    /**
-    * Two vectors will be equal if they have equal sizes of x and y.
+    * Two vectors will be equal if they have equal sizes of x and y. This method makes strict float comparison. For a
+    * more relaxed comparison, see {@link #similar(Vector2D)} method.
     */
    @Override
    public boolean equals(Object obj) {
@@ -489,6 +490,15 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
 
       Vector2D other = (Vector2D) obj;
       return x == other.x && y == other.y;
+   }
+
+   /**
+    * Similar to equals, but uses {@link MathUtil#equals(Object)} to compare x and y.
+    * @param other Othe vector.
+    * @return True if the two are similar, false if not.
+    */
+   public boolean similar(Vector2D other) {
+      return MathUtil.equals(x, other.x) && MathUtil.equals(y, other.y);
    }
 
    @Override
