@@ -31,8 +31,8 @@ import java.util.Random;
  * Numbers inside a Range can be retrieved by using a <b>factor</b>, with the {@link #getValue(float)} method. The
  * factor is a floating point value from 0 to 1, where 0 is <code>from</code> and 1 is <code>to</code>, and any other
  * value are the numbers in between proportionally taken. For example, in a range from 0 to 50, the factor 0.5 will
- * represent number 25, and factor 0.1 will represent the number 0. If you have a number inside the range, you can
- * also ask range class what factor represents it, by calling the {@link #factorOf(float)} method.
+ * represent number 25, and factor 0.1 will represent the number 0. If you have a number inside the range, you can also
+ * ask range class what factor represents it, by calling the {@link #factorOf(float)} method.
  * <p>
  * Another way to retrieve a number is randomly, by calling the {@link #random()} method. Any number in the interval
  * will be picked, and retrieved.
@@ -130,7 +130,7 @@ public final class IntRange {
     * @see #getFrom()
     */
    public int getMin() {
-      return isAscending() ? to : from;
+      return isAscending() ? from : to;
    }
 
    /**
@@ -138,7 +138,7 @@ public final class IntRange {
     * @see #getTo()
     */
    public int getMax() {
-      return isDescending() ? to : from;
+      return isDescending() ? from : to;
    }
 
    /**
@@ -153,17 +153,17 @@ public final class IntRange {
    }
 
    /**
-    * @return True if this range is ascending (to <= from)
+    * @return True if this range is ascending (from <= to)
     */
    public boolean isAscending() {
-      return to <= from;
+      return from <= to;
    }
 
    /**
     * @return True if this range is descending (to > from)
     */
    public boolean isDescending() {
-      return !isDescending();
+      return !isAscending();
    }
 
    /**
@@ -173,7 +173,7 @@ public final class IntRange {
       if (isSingleNumber())
          return to;
 
-      return random.nextInt(to+1) + from;
+      return random.nextInt(getSize()) + from;
    }
 
    /**
@@ -200,7 +200,7 @@ public final class IntRange {
          return to;
 
       factor = factor < 0 ? 0 : (factor > 1 ? 1 : factor);
-      return Math.round(intervalSign() * factor + from);
+      return Math.round(sizeSign() * factor + from);
    }
 
    /**
@@ -216,16 +216,16 @@ public final class IntRange {
       if (isSingleNumber())
          return to;
 
-      return !isInRange(number) ? 0 : (number - from) / intervalSign();
+      return !isInRange(number) ? 0 : (number - from) / (float) sizeSign();
    }
 
-   private float intervalSign() {
+   private int sizeSign() {
       return to - from;
    }
 
    /**
-    * Converts a value in this range, to other proportionally taken in another range. Both numbers will have the same
-    * factor in their respective range.
+    * Converts a value from another range to this range, proportionally. Both numbers will have the same factor in their
+    * respective range.
     * <p>
     * For example, a value of 50 in a range varying from 0 to 100, represents a factor of 0.5. In a range of 0 to 200,
     * the converted number will be 100, since its factor is also 0.5.
@@ -254,9 +254,17 @@ public final class IntRange {
    }
 
    /**
-    * @return Creates a range that is the reversed copy of this one. In the new range, from and to values are switched.
+    * @return Creates a range that is the reversed copy of this one. In the new range, from and to values are switched
+    *         and the random number generator is shared.
     */
    public IntRange reverse() {
       return isSingleNumber() ? this : new IntRange(to, from, random);
+   }
+
+   /**
+    * @return Returns the number of elements in this range.
+    */
+   public int getSize() {
+      return Math.abs(sizeSign())+1;
    }
 }
