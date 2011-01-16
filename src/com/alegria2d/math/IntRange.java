@@ -239,8 +239,8 @@ public final class IntRange {
    }
 
    /**
-    * Converts a value in this range, to other proportionally taken in another range. Both numbers will have the same
-    * factor in their respective range.
+    * Converts a value from another range to this range, proportionally. Both numbers will have the same factor in their
+    * respective range.
     * <p>
     * For example, a value of 50 in a range varying from 0 to 100, represents a factor of 0.5. In a range of 0 to 200,
     * the converted number will be 100, since its factor is also 0.5.
