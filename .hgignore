@@ -1,0 +1,8 @@
+syntax: glob
+
+bin
+classes
+lib
+.project
+.settings
+.classpath
