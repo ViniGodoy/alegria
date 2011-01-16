@@ -27,8 +27,8 @@ import java.util.Random;
 import org.junit.Test;
 
 /**
+ * Tests IntRange class
  * @author Vinicius Godoy de Mendonca (ViniGodoy)
- * 
  */
 public class IntRangeTest {
    private static final float DELTA = 0.000001f;
