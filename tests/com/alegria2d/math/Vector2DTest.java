@@ -55,7 +55,7 @@ public class Vector2DTest {
 
    @Test
    public void createVector2DBySizeAndAngle() {
-      Vector2D v1 = Vector2D.createBySizeAngle(5, (float) Math.toRadians(30.0f));
+      Vector2D v1 = Vector2D.createBySizeAngle(5, Math.toRadians(30.0f));
       assertEquals(5.0f, v1.getSize());
       assertEquals(Math.toRadians(30.0f), v1.getAngleX(), 0.00001);
    }
@@ -149,7 +149,7 @@ public class Vector2DTest {
 
    @Test
    public void isNormalTest() {
-      Vector2D normal = Vector2D.createBySizeAngle(1, (float) Math.toRadians(30));
+      Vector2D normal = Vector2D.createBySizeAngle(1, Math.toRadians(30));
       Vector2D notNormal = Vector2D.createBySizeAngle(4, 0);
 
       assertTrue(normal.isNormal());
@@ -159,7 +159,7 @@ public class Vector2DTest {
 
    @Test
    public void getAngleXTest() {
-      Vector2D v1 = Vector2D.createBySizeAngle(1, (float) Math.toRadians(26));
+      Vector2D v1 = Vector2D.createBySizeAngle(1, Math.toRadians(26));
       assertEquals(Math.toRadians(26), v1.getAngleX(), 0.00001);
    }
 
