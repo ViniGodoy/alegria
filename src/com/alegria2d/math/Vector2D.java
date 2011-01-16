@@ -88,7 +88,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * @param angle The angle, in radians.
     * @return The newly created vector.
     */
-   public static Vector2D createBySizeAngle(float size, float angle) {
+   public static Vector2D createBySizeAngle(float size, double angle) {
       return new Vector2D((float) cos(angle) * size, (float) sin(angle) * size);
    }
 
