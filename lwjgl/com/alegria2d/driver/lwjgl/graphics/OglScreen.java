@@ -177,10 +177,12 @@ public class OglScreen implements Screen {
       return Display.isCreated();
    }
 
+   @Override
    public boolean isVisible() {
       return Display.isVisible();
    }
 
+   @Override
    public boolean isActive() {
       return Display.isActive();
    }
