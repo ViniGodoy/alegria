@@ -26,6 +26,11 @@ import static junit.framework.Assert.assertNotSame;
 import static junit.framework.Assert.assertTrue;
 import org.junit.Test;
 
+/**
+ * Tests Vector2D class
+ * @author Tacio Dias Palhao Mendes
+ * @author Vinicius Godoy de Mendonca (ViniGodoy)
+ */
 public class Vector2DTest {
    @Test
    public void createVector2DNoParametersTest() {
