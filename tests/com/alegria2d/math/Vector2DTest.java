@@ -33,21 +33,21 @@ import org.junit.Test;
  */
 public class Vector2DTest {
    @Test
-   public void createVector2DNoParametersTest() {
+   public void constructor() {
       Vector2D v1 = new Vector2D();
       assertEquals(0.0f, v1.getX());
       assertEquals(0.0f, v1.getY());
    }
 
    @Test
-   public void createVector2DParametersXYTest() {
+   public void constructorFloatFloat() {
       Vector2D v1 = new Vector2D(0.5f, 0.3f);
       assertEquals(0.5f, v1.getX());
       assertEquals(0.3f, v1.getY());
    }
 
    @Test
-   public void createVector2DParameterVector2DTest() {
+   public void constructorVector() {
       Vector2D v1 = new Vector2D(new Vector2D(0.3f, 0.5f));
       assertEquals(0.3f, v1.getX());
       assertEquals(0.5f, v1.getY());
@@ -61,7 +61,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void setParametersXYTest() {
+   public void setFloatFloat() {
       Vector2D v1 = new Vector2D();
       v1.set(5.0f, 3.0f);
       assertEquals(5.0f, v1.getX());
@@ -69,7 +69,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void setParameterVectorTest() {
+   public void setVector() {
       Vector2D v1 = new Vector2D();
       v1.set(new Vector2D(5, 3));
       assertEquals(5.0f, v1.getX());
@@ -103,9 +103,9 @@ public class Vector2DTest {
    @Test
    public void getY() {
       Vector2D v1 = new Vector2D();
-      assertEquals(0.0f, v1.getX());
-      v1.setX(5);
-      assertEquals(5.0f, v1.getX());
+      assertEquals(0.0f, v1.getY());
+      v1.setY(5);
+      assertEquals(5.0f, v1.getY());
    }
 
    @Test
@@ -133,13 +133,13 @@ public class Vector2DTest {
    }
 
    @Test
-   public void getSizeSqrTest() {
+   public void getSizeSqr() {
       Vector2D v1 = Vector2D.createBySizeAngle(9.0f, 0);
       assertEquals(81.0f, v1.getSizeSqr());
    }
 
    @Test
-   public void isZeroTest() {
+   public void isZero() {
       Vector2D thatIsZero = new Vector2D();
       Vector2D thatIsNotZero = new Vector2D(1, 1);
 
@@ -148,7 +148,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void isNormalTest() {
+   public void isNormal() {
       Vector2D normal = Vector2D.createBySizeAngle(1, Math.toRadians(30));
       Vector2D notNormal = Vector2D.createBySizeAngle(4, 0);
 
@@ -158,7 +158,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void getAngleXTest() {
+   public void getAngleX() {
       Vector2D v1 = Vector2D.createBySizeAngle(1, Math.toRadians(26));
       assertEquals(Math.toRadians(26), v1.getAngleX(), 0.00001);
    }
@@ -180,7 +180,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void getPerpendicularTest() {
+   public void getPerpendicular() {
       Vector2D v1 = new Vector2D(5, 3);
       assertTrue(v1.rotate(Math.toRadians(90)).similar(v1.getPerpendicular()));
    }
@@ -264,7 +264,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void negativeMeTest() {
+   public void negativeMe() {
       Vector2D v1 = new Vector2D(5, 6);
       v1.negativeMe();
       assertEquals(new Vector2D(-5, -6), v1);
@@ -293,7 +293,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void dotTest() {
+   public void dot() {
       Vector2D v1 = Vector2D.createBySizeAngle(1, 10);
       Vector2D v2 = Vector2D.createBySizeAngle(1, 40);
 
@@ -310,7 +310,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void getAtParameterIndexTest() {
+   public void getAt() {
       Vector2D v1 = new Vector2D();
 
       v1.putAt(0, 3.0f);
@@ -322,7 +322,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void putAtParameterIndexValueTest() {
+   public void putAt() {
 
       Vector2D v1 = new Vector2D();
 
@@ -335,7 +335,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void toArrayTest() {
+   public void toArray() {
       Vector2D v1 = new Vector2D(1, 1);
       float[] array = v1.toArray();
 
@@ -344,7 +344,7 @@ public class Vector2DTest {
    }
 
    @Test
-   public void to3DArrayTest() {
+   public void to3DArray() {
       Vector2D v1 = new Vector2D(1, 1);
       float[] array = v1.to3DArray();
 
@@ -354,14 +354,14 @@ public class Vector2DTest {
    }
 
    @Test
-   public void compareToParameterVector2DTest() {
+   public void compareTo() {
       Vector2D v1 = new Vector2D(1, 1);
       Vector2D equalsV1 = new Vector2D(1, 1);
       Vector2D largerV1 = new Vector2D(2, 2);
       Vector2D smallerV1 = new Vector2D(0, 0);
 
       assertEquals(0, v1.compareTo(equalsV1));
-      assertEquals(-1, v1.compareTo(largerV1));
-      assertEquals(1, v1.compareTo(smallerV1));
+      assertTrue(v1.compareTo(largerV1) < 0);
+      assertTrue(v1.compareTo(smallerV1) > 0);
    }
 }
