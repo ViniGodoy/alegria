@@ -229,7 +229,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * @param angle The angle, in bytes
     * @return This vector.
     */
-   public Vector2D rotateMe(float angle) {
+   public Vector2D rotateMe(double angle) {
       float s = (float) sin(angle);
       float c = (float) cos(angle);
 
@@ -248,7 +248,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * @param angle The angle, in degrees
     * @return A new vector, equal to this one rotated in angle degrees.
     */
-   public Vector2D rotate(float angle) {
+   public Vector2D rotate(double angle) {
       return clone().rotateMe(angle);
    }
 
