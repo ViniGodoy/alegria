@@ -56,7 +56,7 @@ public class OglImageLoader implements ImageLoader {
       public int toOgl() {
          return filter;
       }
-   };
+   }
    
    private Filter filter = Filter.SMOOTH;
 
