@@ -24,7 +24,7 @@ import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
-import com.alegria2d.exception.AlegriaRuntimeException;
+import com.alegria2d.exception.DivideByZeroException;
 
 /**
  * Represents a vector in the 2D Cartesian coordinate space.
@@ -49,7 +49,7 @@ import com.alegria2d.exception.AlegriaRuntimeException;
  * The mathematical operator names are also compatible with <a href="http://groovy.codehaus.org">Groovy Script
  * Language</a>, allowing them to act as normal operators.
  * 
- * @author Vinicius G. Mendonca
+ * @author Vinicius Godoy de Mendonca
  */
 public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    private float x;
@@ -531,11 +531,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     */
    @Override
    public Vector2D clone() {
-      try {
-         return (Vector2D) super.clone();
-      } catch (CloneNotSupportedException e) {
-         throw new AlegriaRuntimeException(e);
-      }
+      return new Vector2D(this);
    }
 
    /**
