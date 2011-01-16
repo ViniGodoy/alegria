@@ -30,6 +30,18 @@ import java.util.Random;
  */
 public class MathUtil {
    /**
+    * Represents the default maximum tolerated delta for functions that does float comparison, such as
+    * {@link Vector2D#isNormal()} or {@link MathUtil#equals(float, float)}
+    */
+   public static final float FLOAT_DELTA = 0.00001f;
+
+   /**
+    * Represents the default maximum tolerated delta for functions that does double comparison, such as
+    * {@link MathUtil#equals(double, double)}
+    */
+   public static final float DOUBLE_DELTA = 0.00000000000001f;
+
+   /**
     * Force this vector to have the given maximum size.
     * 
     * @param vector The vector to truncate
@@ -90,19 +102,68 @@ public class MathUtil {
     * 
     * @param ray The ray vector
     * @param normal The surface normal
-    * @return The reflected vector. 
+    * @return The reflected vector.
     */
    public static Vector2D reflect(Vector2D ray, Vector2D normal) {
       return ray.minus(normal.multiply(2 * ray.dot(normal)));
    }
-   
+
    /**
     * Generates a new random number between 0.0 (inclusive) and 1.0 (inclusive).
-    * @param random The random number generator to use. 
+    * 
+    * @param random The random number generator to use.
     * @return A random number between 0.0 (inclusive) and 1.0 (inclusive).
     */
    public static float nextFloatInclusive(Random random) {
       float r = random.nextFloat();
       return r == random.nextFloat() ? 1 : r;
+   }
+
+   /**
+    * Compare if two floats are equals within the given delta tolerance.
+    * 
+    * @param f1 A float
+    * @param f2 Another float
+    * @param delta The delta tolerance.
+    * @return True if they are equal, false if not.
+    */
+   public static boolean equals(float f1, float f2, float delta) {
+      return Math.abs(f1 - f2) <= delta;
+   }
+
+   /**
+    * Compare if two floats are equals with the default delta tolerance.
+    * 
+    * @param f1 A float
+    * @param f2 Another float
+    * @return True if they are equal, false if not.
+    * @see MathUtil#FLOAT_DELTA
+    */
+   public static boolean equals(float f1, float f2) {
+      return equals(f1, f2, FLOAT_DELTA);
+   }
+
+   /**
+    * Compare if two floats are equals within the given delta tolerance.
+    * 
+    * @param f1 A float
+    * @param f2 Another float
+    * @param delta The delta tolerance.
+    * @return True if they are equal, false if not.
+    */
+   public static boolean equals(double f1, double f2, double delta) {
+      return Math.abs(f1 - f2) <= delta;
+   }
+
+   /**
+    * Compare if two floats are equals with the default delta tolerance.
+    * 
+    * @param f1 A float
+    * @param f2 Another float
+    * @return True if they are equal, false if not.
+    * @see MathUtil#FLOAT_DELTA
+    */
+   public static boolean equals(double f1, double f2) {
+      return equals(f1, f2, DOUBLE_DELTA);
    }
 }
