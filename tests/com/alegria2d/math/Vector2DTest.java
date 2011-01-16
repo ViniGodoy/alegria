@@ -303,7 +303,7 @@ public class Vector2DTest {
 
    @Test
    public void cloneTest() {
-      Vector2D v1 = new Vector2D(1, 1);
+      Vector2D v1 = new Vector2D(1, 2);
       Vector2D v1Clone = v1.clone();
 
       assertEquals(v1, v1Clone);
