@@ -184,7 +184,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * @return True if this vector length is zero.
     */
    public boolean isZero() {
-      return getSizeSqr() == 0;
+      return MathUtil.equals(getSizeSqr(), 0);
    }
 
    /**
@@ -193,7 +193,7 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
     * @return True if this vector length is one.
     */
    public boolean isNormal() {
-      return getSizeSqr() == 1;
+      return MathUtil.equals(getSizeSqr(), 1);
    }
 
    /**
@@ -270,13 +270,13 @@ public final class Vector2D implements Cloneable, Comparable<Vector2D> {
    public Vector2D normalizeMe() {
       float sizeSqr = getSizeSqr();
 
-      if (sizeSqr == 0) {
+      if (isZero()) {
          // TODO add log message here
          return this;
       }
 
       // Already a normal vector
-      if (sizeSqr == 1) {
+      if (isNormal()) {
          return this;
       }
 
