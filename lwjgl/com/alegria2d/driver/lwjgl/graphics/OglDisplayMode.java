@@ -99,6 +99,6 @@ public class OglDisplayMode implements DisplayMode, Comparable<OglDisplayMode> {
 
    @Override
    public String toString() {
-      return String.format("%dx%dx%d@%x", getWidth(), getHeight(), getDepth(), getRefreshRate());
+      return String.format("%dx%dx%d@%dHz", getWidth(), getHeight(), getDepth(), getRefreshRate());
    }
 }
