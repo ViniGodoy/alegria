@@ -34,8 +34,8 @@ package com.alegria2d.math;
  * [g h k]
  * </pre>
  * 
- * These methods are named {@link #getA()}, {@link #getB()}, {@link #getC()}, {@link #getD()}, {@link #getE()}, {@link #getF()},
- * {@link #getG()}, {@link #getH()} and {@link #getK()}. 
+ * These methods are named {@link #getA()}, {@link #getB()}, {@link #getC()}, {@link #getD()}, {@link #getE()},
+ * {@link #getF()}, {@link #getG()}, {@link #getH()} and {@link #getK()}.
  * <p>
  * 
  * @author Vinicius G. Mendonca
@@ -276,7 +276,7 @@ public class Matrix3D implements Cloneable {
     * @return the A[2][2] element.
     */
    public float getK() {
-      return A[3][2];
+      return A[2][2];
    }
 
    /**
@@ -584,6 +584,58 @@ public class Matrix3D implements Cloneable {
       if (row < 0 || row > 2)
          throw new IndexOutOfBoundsException();
       return new MatrixRow(row);
+   }
+
+/**
+    * Test if this matrix is equal to the given object. Will only return true for other 3D matrices.Two matrices are
+    * equal if they have exact same values. This verification is very narrow. For a less precise check, see
+    * {@link #similar(Matrix3D)
+    * 
+    * @param other Object to test equals.
+    * @see #similar(Matrix3D)
+    */
+   @Override
+   public boolean equals(Object other) {
+      if (other == null)
+         return false;
+
+      if (other == this)
+         return true;
+
+      if (other.getClass() != getClass())
+         return false;
+
+      Matrix3D B = (Matrix3D) other;
+      for (int i = 0; i < 3; i++)
+         for (int j = 0; j < 3; j++)
+            if (A[i][j] != B.A[i][j])
+               return false;
+      return true;
+   }
+
+   @Override
+   public int hashCode() {
+      HashBuilder hb = new HashBuilder();
+      for (int i = 0; i < 3; i++)
+         for (int j = 0; j < 3; j++)
+            hb.add(A[i][j]);
+      return hb.hashCode();
+   }
+
+   /**
+    * Test if two matrices are similar. They will be similar if all values returns true in
+    * {@link MathUtil#equals(float, float)} method.
+    * 
+    * @param B The other matrix to test.
+    * @return True if one matrix is similar to another
+    */
+   public boolean similar(Matrix3D B) {
+      for (int i = 0; i < 3; i++)
+         for (int j = 0; j < 3; j++)
+            if (!MathUtil.equals(A[i][j], B.A[i][j]))
+               return false;
+
+      return true;
    }
 
    /**
