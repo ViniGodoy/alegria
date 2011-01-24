@@ -32,7 +32,7 @@ import org.junit.Test;
 import com.alegria2d.core.driver.graphics.DisplayMode;
 import com.alegria2d.core.driver.graphics.Renderer;
 import com.alegria2d.core.driver.graphics.Screen;
-import com.alegria2d.core.driver.graphics.exception.UnableToOpenWindowException;
+import com.alegria2d.core.driver.graphics.UnableToOpenWindowException;
 import com.alegria2d.driver.lwjgl.graphics.OglRenderer;
 import com.alegria2d.driver.lwjgl.graphics.OglScreen;
 
