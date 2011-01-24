@@ -25,6 +25,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import org.junit.Test;
+import com.alegria2d.core.math.FloatRange;
+import com.alegria2d.core.math.IntRange;
 
 /**
  * Tests IntRange class

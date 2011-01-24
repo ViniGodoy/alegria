@@ -20,21 +20,19 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.exception;
+package com.alegria2d.core.driver.graphics;
 
+import com.alegria2d.core.exception.AlegriaException;
 
 /**
- * Indicate that some method was not allowed to be called yet.
+ * This exception occurs when was impossible to open the Alegria main window.
  * @author Vinicius G. Mendonca
  */
-public class PrematureCallException extends AlegriaRuntimeException {
-   private static final long serialVersionUID = 5459082218135994809L;
+public class UnableToOpenWindowException extends AlegriaException {
+   private static final long serialVersionUID = -6144323433655715502L;
 
-   public PrematureCallException() {
-      this("This method must be called after init()");
-   }
-   
-   public PrematureCallException(String message) {
-      super(message);
+   public UnableToOpenWindowException(Throwable cause)
+   {
+      super("Unable to open window.", cause);
    }
 }

@@ -22,7 +22,7 @@
  */
 package com.alegria2d.driver.lwjgl.graphics;
 
-import com.alegria2d.base.graphics.DisplayMode;
+import com.alegria2d.core.driver.graphics.DisplayMode;
 
 /**
  * Encapsulates an LWJGL display mode and provides the Alegria LWJGL DisplayMode interface.

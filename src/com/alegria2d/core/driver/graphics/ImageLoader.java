@@ -20,31 +20,24 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.base.graphics;
+package com.alegria2d.core.driver.graphics;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
- * Represents a display mode that can be applied to the screen.
+ * Loads images from disk
  * 
  * @author Vinicius G. Mendonca
  */
-public interface DisplayMode {
+public interface ImageLoader {   
    /**
-    * @return the color depth, in bytes per pixel (bpp).
+    * Loads images of the specified format from disk.
+    * 
+    * @param format The image format name (e.g. JPG, PNG);
+    * @param source Source data
+    * @return The loaded image.
+    * @throws IOException If a problem occurs while loading.
     */
-   int getDepth();
-   
-   /**
-    * @return the display mode height, in pixels.
-    */
-   int getHeight();
-   
-   /**
-    * @return the display mode width, in pixels.
-    */
-   int getWidth();
-   
-   /**
-    * @return The refresh rate, in hertz. 
-    */
-   int getRefreshRate();
+   Image load(String format, InputStream source) throws IOException;
 }

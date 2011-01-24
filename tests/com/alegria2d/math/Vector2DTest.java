@@ -25,6 +25,8 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotSame;
 import static junit.framework.Assert.assertTrue;
 import org.junit.Test;
+import com.alegria2d.core.math.MathUtil;
+import com.alegria2d.core.math.Vector2D;
 
 /**
  * Tests Vector2D class

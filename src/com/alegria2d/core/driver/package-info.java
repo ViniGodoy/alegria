@@ -10,5 +10,5 @@
  * We call a "driver" any implementation of these interfaces that use a specific vendor-dependent API, such as java2d or
  * LWJGL.
  */
-package com.alegria2d.base;
+package com.alegria2d.core.driver;
 

@@ -8,4 +8,4 @@
  * {@link Matrix3D} class where some variables are declared uppercase, since matrices are represented in math as a
  * uppercase letter.
  */
-package com.alegria2d.math;
+package com.alegria2d.core.math;

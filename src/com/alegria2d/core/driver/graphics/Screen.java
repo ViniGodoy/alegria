@@ -20,13 +20,11 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.base.graphics;
+package com.alegria2d.core.driver.graphics;
 
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.io.InputStream;
-import com.alegria2d.base.graphics.exception.UnableToChangeDisplayModeException;
-import com.alegria2d.base.graphics.exception.UnableToOpenWindowException;
 
 /**
  * Represents the screen that is used to render the game. Only one screen can be created.

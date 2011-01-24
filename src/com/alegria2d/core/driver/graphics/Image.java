@@ -20,24 +20,28 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.base.graphics;
+package com.alegria2d.core.driver.graphics;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
- * Loads images from disk
+ * Represents a bitmap image that can be draw on screen
  * 
  * @author Vinicius G. Mendonca
  */
-public interface ImageLoader {   
+public interface Image {
+
    /**
-    * Loads images of the specified format from disk.
-    * 
-    * @param format The image format name (e.g. JPG, PNG);
-    * @param source Source data
-    * @return The loaded image.
-    * @throws IOException If a problem occurs while loading.
+    * @return The image width, in pixels
     */
-   Image load(String format, InputStream source) throws IOException;
+   int getWidth();
+   
+   /**
+    * @return The image height in pixels
+    */
+   int getHeight();
+   
+   /**
+    * @return True if the image supports an alpha channel 
+    */
+   boolean hasAlpha();
 }

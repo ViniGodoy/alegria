@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU Lesser General Public License along with Alegria. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.math;
+package com.alegria2d.core.math;
 
 /**
  * Represents a 3x3 matrix.

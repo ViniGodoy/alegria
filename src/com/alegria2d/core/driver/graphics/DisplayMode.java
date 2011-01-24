@@ -20,28 +20,31 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.base.graphics;
-
+package com.alegria2d.core.driver.graphics;
 
 /**
- * Represents a bitmap image that can be draw on screen
+ * Represents a display mode that can be applied to the screen.
  * 
  * @author Vinicius G. Mendonca
  */
-public interface Image {
-
+public interface DisplayMode {
    /**
-    * @return The image width, in pixels
+    * @return the color depth, in bytes per pixel (bpp).
     */
-   int getWidth();
+   int getDepth();
    
    /**
-    * @return The image height in pixels
+    * @return the display mode height, in pixels.
     */
    int getHeight();
    
    /**
-    * @return True if the image supports an alpha channel 
+    * @return the display mode width, in pixels.
     */
-   boolean hasAlpha();
+   int getWidth();
+   
+   /**
+    * @return The refresh rate, in hertz. 
+    */
+   int getRefreshRate();
 }
