@@ -20,19 +20,28 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.base.graphics.exception;
+package com.alegria2d.core.driver;
 
-import com.alegria2d.exception.AlegriaException;
+import com.alegria2d.core.driver.graphics.DisplayModeFinder;
+import com.alegria2d.core.driver.graphics.Screen;
 
 /**
- * This exception occurs when was impossible to open the Alegria main window.
+ * This class is able to construct all basic Alegria structures, and act as the basic entry-point for an Alegria Driver.
+ * 
  * @author Vinicius G. Mendonca
  */
-public class UnableToOpenWindowException extends AlegriaException {
-   private static final long serialVersionUID = -6144323433655715502L;
+public interface DriverFactory {
+   /**
+    * Creates a screen
+    * 
+    * @return The new screen
+    */
+   Screen newScreen();
 
-   public UnableToOpenWindowException(Throwable cause)
-   {
-      super("Unable to open window.", cause);
-   }
+   /**
+    * Creates a new Display Mode Finder
+    * 
+    * @return The new display mode finder
+    */
+   DisplayModeFinder newDisplayModeFinder();     
 }

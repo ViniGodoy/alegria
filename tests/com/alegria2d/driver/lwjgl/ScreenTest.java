@@ -29,10 +29,10 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import org.junit.Before;
 import org.junit.Test;
-import com.alegria2d.base.graphics.DisplayMode;
-import com.alegria2d.base.graphics.Renderer;
-import com.alegria2d.base.graphics.Screen;
-import com.alegria2d.base.graphics.exception.UnableToOpenWindowException;
+import com.alegria2d.core.driver.graphics.DisplayMode;
+import com.alegria2d.core.driver.graphics.Renderer;
+import com.alegria2d.core.driver.graphics.Screen;
+import com.alegria2d.core.driver.graphics.exception.UnableToOpenWindowException;
 import com.alegria2d.driver.lwjgl.graphics.OglRenderer;
 import com.alegria2d.driver.lwjgl.graphics.OglScreen;
 

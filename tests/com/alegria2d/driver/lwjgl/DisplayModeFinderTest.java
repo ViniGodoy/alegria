@@ -27,8 +27,8 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import org.junit.Before;
 import org.junit.Test;
-import com.alegria2d.base.graphics.DisplayMode;
-import com.alegria2d.base.graphics.DisplayModeFinder;
+import com.alegria2d.core.driver.graphics.DisplayMode;
+import com.alegria2d.core.driver.graphics.DisplayModeFinder;
 import com.alegria2d.driver.lwjgl.graphics.OglDisplayModeFinder;
 
 /**

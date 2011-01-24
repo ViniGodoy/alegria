@@ -18,22 +18,21 @@
  * You should have received a copy of the GNU Lesser General Public License along with Alegria. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.exception;
-
+package com.alegria2d.core.exception;
 
 /**
- * Basic alegria runtime exception class. 
+ * Basic alegria exception class. 
  * 
  * @author Vinicius G. Mendonca
  */
-public class AlegriaRuntimeException extends RuntimeException {   
-   private static final long serialVersionUID = -4479684697326401294L;
-   
+public class AlegriaException extends Exception {
+   private static final long serialVersionUID = 4361345062188348873L;
+
    /**
     * Constructs a new exception with <code>null</code> as its detail message. The cause is not initialized, and may
     * subsequently be initialized by a call to {@link #initCause}.
     */
-   public AlegriaRuntimeException() {
+   public AlegriaException() {
       super();
    }
    
@@ -44,7 +43,7 @@ public class AlegriaRuntimeException extends RuntimeException {
     * @param message the detail message. The detail message is saved for later retrieval by the {@link #getMessage()}
     *           method.
     */
-   public AlegriaRuntimeException(String message) {
+   public AlegriaException(String message) {
       super(message);
    }
    /**
@@ -57,7 +56,7 @@ public class AlegriaRuntimeException extends RuntimeException {
     * @param cause the cause (which is saved for later retrieval by the {@link #getCause()} method). (A <tt>null</tt>
     *           value is permitted, and indicates that the cause is nonexistent or unknown.)
     */
-   public AlegriaRuntimeException(String message, Throwable cause) {
+   public AlegriaException(String message, Throwable cause) {
       super(message, cause);
    }
 
@@ -70,7 +69,7 @@ public class AlegriaRuntimeException extends RuntimeException {
     * @param cause the cause (which is saved for later retrieval by the {@link #getCause()} method). (A <tt>null</tt>
     *           value is permitted, and indicates that the cause is nonexistent or unknown.)
     */
-   public AlegriaRuntimeException(Throwable cause) {
+   public AlegriaException(Throwable cause) {
       super(cause);
    }
 }

@@ -23,7 +23,7 @@
 package com.alegria2d.driver.lwjgl.graphics;
 
 import org.newdawn.slick.opengl.Texture;
-import com.alegria2d.base.graphics.Image;
+import com.alegria2d.core.driver.graphics.Image;
 
 public class OglImage implements Image {
    Texture texture;

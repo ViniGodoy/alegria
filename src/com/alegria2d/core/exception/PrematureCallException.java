@@ -20,28 +20,21 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.base.graphics.exception;
+package com.alegria2d.core.exception;
 
-import com.alegria2d.base.graphics.DisplayMode;
-import com.alegria2d.exception.AlegriaException;
 
 /**
- * This exception is called when a change to the display mode was attempted, but failed.
- * 
+ * Indicate that some method was not allowed to be called yet.
  * @author Vinicius G. Mendonca
  */
-public class UnableToChangeDisplayModeException extends AlegriaException {
-   private static final long serialVersionUID = 4575081153155799406L;
-   
-   private DisplayMode desired;
-   
-   public UnableToChangeDisplayModeException(DisplayMode desired, Throwable cause)
-   {
-      super("Unable to change display mode to " + desired.toString(), cause);
-      this.desired = desired;
+public class PrematureCallException extends AlegriaRuntimeException {
+   private static final long serialVersionUID = 5459082218135994809L;
+
+   public PrematureCallException() {
+      this("This method must be called after init()");
    }
    
-   public DisplayMode getDesiredDisplayMode() {
-      return desired;
+   public PrematureCallException(String message) {
+      super(message);
    }
 }

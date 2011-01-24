@@ -5,5 +5,5 @@
  * packages. We try to concentrate here all general purpose exceptions, that might be reused in several parts of the
  * API.
  */
-package com.alegria2d.exception;
+package com.alegria2d.core.exception;
 

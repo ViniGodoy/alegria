@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU Lesser General Public License along with Alegria. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.exception;
+package com.alegria2d.core.exception;
 
 /**
  * Exception for mathematical problems.

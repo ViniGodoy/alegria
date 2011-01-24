@@ -18,12 +18,12 @@
  * You should have received a copy of the GNU Lesser General Public License along with Alegria. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.math;
+package com.alegria2d.core.math;
 
 import java.util.Random;
 
 /**
- * This class represents a range of integer values.
+ * This class represents a range of floating-point values.
  * <p>
  * The range is delimited by two values, called <code>from</code> and <to>to</to>. Both values are inclusive. The
  * interval may be ascending, when from < to, or descending, with from > to.
@@ -31,8 +31,8 @@ import java.util.Random;
  * Numbers inside a Range can be retrieved by using a <b>factor</b>, with the {@link #getValue(float)} method. The
  * factor is a floating point value from 0 to 1, where 0 is <code>from</code> and 1 is <code>to</code>, and any other
  * value are the numbers in between proportionally taken. For example, in a range from 0 to 50, the factor 0.5 will
- * represent number 25, and factor 0.1 will represent the number 0. If you have a number inside the range, you can also
- * ask range class what factor represents it, by calling the {@link #factorOf(float)} method.
+ * represent number 25, and factor 0.1 will represent the number 0.5. If you have a number inside the range, you can
+ * also ask range class what factor represents it, by calling the {@link #factorOf(float)} method.
  * <p>
  * Another way to retrieve a number is randomly, by calling the {@link #random()} method. Any number in the interval
  * will be picked, and retrieved.
@@ -42,12 +42,12 @@ import java.util.Random;
  * single interval ranges are truly immutable objects.
  * 
  * @author Vinicius Godoy de Mendonca (ViniGodoy)
- * @see FloatRange
+ * @see IntRange
  */
-public final class IntRange {
+public final class FloatRange {
    private Random random; // TODO Replace by the new Alegria Random class, when it's ready.
-   private int from;
-   private int to;
+   private float from;
+   private float to;
 
    /**
     * Creates a new range for the given interval, that uses the given random number generator.
@@ -66,7 +66,7 @@ public final class IntRange {
     * @param to End of the interval (also inclusive)
     * @param random The random number generator
     */
-   public IntRange(int from, int to, Random random) {
+   public FloatRange(float from, float to, Random random) {
       this.from = from;
       this.to = to;
 
@@ -85,9 +85,9 @@ public final class IntRange {
     * 
     * @param from Begin of the interval (inclusive)
     * @param to End of the interval (also inclusive)
-    * @see #IntRange(float, float, Random)
+    * @see #FloatRange(float, float, Random)
     */
-   public IntRange(int from, int to) {
+   public FloatRange(float from, float to) {
       this(from, to, null);
    }
 
@@ -98,7 +98,7 @@ public final class IntRange {
     * 
     * @param fromTo The number.
     */
-   public IntRange(int fromTo) {
+   public FloatRange(float fromTo) {
       this(fromTo, fromTo, null);
    }
 
@@ -109,7 +109,7 @@ public final class IntRange {
     * @see #getMin()
     * @see #getTo()
     */
-   public int getFrom() {
+   public float getFrom() {
       return from;
    }
 
@@ -121,7 +121,7 @@ public final class IntRange {
     * @see #getMax()
     * @see #getFrom()
     */
-   public int getTo() {
+   public float getTo() {
       return to;
    }
 
@@ -129,7 +129,7 @@ public final class IntRange {
     * @return The smallest value in this interval.
     * @see #getFrom()
     */
-   public int getMin() {
+   public float getMin() {
       return isAscending() ? from : to;
    }
 
@@ -137,7 +137,7 @@ public final class IntRange {
     * @return The biggest value in this interval.
     * @see #getTo()
     */
-   public int getMax() {
+   public float getMax() {
       return isDescending() ? from : to;
    }
 
@@ -169,17 +169,17 @@ public final class IntRange {
    /**
     * @return A random number within this range.
     */
-   public int random() {
+   public float random() {
       if (isSingleNumber())
          return to;
 
-      return random.nextInt(getSize()) + from;
+      return getValue(MathUtil.nextFloatInclusive(random));
    }
 
    /**
     * @param value Indicate if this value is inside this range.
     */
-   public boolean isInRange(int value) {
+   public boolean isInRange(float value) {
       return value >= getMin() && value <= getMax();
    }
 
@@ -195,12 +195,12 @@ public final class IntRange {
     * 
     * @see #factorOf(float)
     */
-   public int getValue(float factor) {
+   public float getValue(float factor) {
       if (isSingleNumber())
          return to;
 
       factor = factor < 0 ? 0 : (factor > 1 ? 1 : factor);
-      return Math.round(sizeSign() * factor + from);
+      return intervalSign() * factor + from;
    }
 
    /**
@@ -212,30 +212,15 @@ public final class IntRange {
     * 
     * @see #getValue(float)
     */
-   public float factorOf(int number) {
+   public float factorOf(float number) {
       if (isSingleNumber())
          return to;
 
-      return !isInRange(number) ? 0 : (number - from) / (float) sizeSign();
+      return !isInRange(number) ? 0 : (number - from) / intervalSign();
    }
 
-   private int sizeSign() {
+   private float intervalSign() {
       return to - from;
-   }
-
-   /**
-    * Converts a value from another range to this range, proportionally. Both numbers will have the same factor in their
-    * respective range.
-    * <p>
-    * For example, a value of 50 in a range varying from 0 to 100, represents a factor of 0.5. In a range of 0 to 200,
-    * the converted number will be 100, since its factor is also 0.5.
-    * 
-    * @param value The value to convert.
-    * @param range The destination range
-    * @return The converted value
-    */
-   public int convert(int value, IntRange range) {
-      return getValue(range.factorOf(value));
    }
 
    /**
@@ -254,17 +239,24 @@ public final class IntRange {
    }
 
    /**
-    * @return Creates a range that is the reversed copy of this one. In the new range, from and to values are switched
-    *         and the random number generator is shared.
+    * Converts a value from another range to this range, proportionally. Both numbers will have the same factor in their
+    * respective range.
+    * <p>
+    * For example, a value of 50 in a range varying from 0 to 100, represents a factor of 0.5. In a range of 0 to 200,
+    * the converted number will be 100, since its factor is also 0.5.
+    * 
+    * @param value The value to convert.
+    * @param range The destination range
+    * @return The converted value
     */
-   public IntRange reverse() {
-      return isSingleNumber() ? this : new IntRange(to, from, random);
+   public float convert(int value, IntRange range) {
+      return getValue(range.factorOf(value));
    }
 
    /**
-    * @return Returns the number of elements in this range.
+    * @return Creates a range that is the reversed copy of this one. In the new range, from and to values are switched.
     */
-   public int getSize() {
-      return Math.abs(sizeSign())+1;
+   public FloatRange reverse() {
+      return isSingleNumber() ? this : new FloatRange(to, from, random);
    }
 }

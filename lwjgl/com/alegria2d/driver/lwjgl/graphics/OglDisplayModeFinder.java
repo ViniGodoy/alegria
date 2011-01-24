@@ -26,9 +26,9 @@ import java.util.Set;
 import java.util.TreeSet;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
-import com.alegria2d.base.graphics.DisplayMode;
-import com.alegria2d.base.graphics.DisplayModeFinder;
-import com.alegria2d.exception.AlegriaRuntimeException;
+import com.alegria2d.core.driver.graphics.DisplayMode;
+import com.alegria2d.core.driver.graphics.DisplayModeFinder;
+import com.alegria2d.core.exception.AlegriaRuntimeException;
 
 public class OglDisplayModeFinder implements DisplayModeFinder {
    @Override

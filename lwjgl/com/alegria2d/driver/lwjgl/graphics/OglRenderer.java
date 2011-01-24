@@ -23,9 +23,9 @@
 package com.alegria2d.driver.lwjgl.graphics;
 
 import static org.lwjgl.opengl.GL11.*;
-import com.alegria2d.base.graphics.Image;
-import com.alegria2d.base.graphics.ImageLoader;
-import com.alegria2d.base.graphics.Renderer;
+import com.alegria2d.core.driver.graphics.Image;
+import com.alegria2d.core.driver.graphics.ImageLoader;
+import com.alegria2d.core.driver.graphics.Renderer;
 
 public class OglRenderer implements Renderer {
    @Override

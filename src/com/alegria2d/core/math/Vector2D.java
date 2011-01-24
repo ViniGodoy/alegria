@@ -18,13 +18,13 @@
  * You should have received a copy of the GNU Lesser General Public License along with Alegria. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.math;
+package com.alegria2d.core.math;
 
 import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
-import com.alegria2d.exception.DivideByZeroException;
+import com.alegria2d.core.exception.DivideByZeroException;
 
 /**
  * Represents a vector in the 2D Cartesian coordinate space.

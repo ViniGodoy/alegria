@@ -27,8 +27,8 @@ import static org.lwjgl.opengl.GL11.GL_NEAREST;
 import java.io.IOException;
 import java.io.InputStream;
 import org.newdawn.slick.opengl.TextureLoader;
-import com.alegria2d.base.graphics.Image;
-import com.alegria2d.base.graphics.ImageLoader;
+import com.alegria2d.core.driver.graphics.Image;
+import com.alegria2d.core.driver.graphics.ImageLoader;
 
 /**
  * @author Vinicius G. Mendonca

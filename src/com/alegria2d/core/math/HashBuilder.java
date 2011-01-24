@@ -19,7 +19,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package com.alegria2d.math;
+package com.alegria2d.core.math;
 
 /**
  * Build a HASH value based on the added values. If none value is added, DEFAULT_BASE is the hash returned in getHash()

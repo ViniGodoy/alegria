@@ -1,4 +1,4 @@
 /**
  * Provide the basic Graphics interfaces.
  */
-package com.alegria2d.base.graphics;
+package com.alegria2d.core.driver.graphics;

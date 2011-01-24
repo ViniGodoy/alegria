@@ -36,12 +36,12 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.opengl.ImageDataFactory;
 import org.newdawn.slick.opengl.LoadableImageData;
-import com.alegria2d.base.graphics.DisplayMode;
-import com.alegria2d.base.graphics.Renderer;
-import com.alegria2d.base.graphics.Screen;
-import com.alegria2d.base.graphics.exception.UnableToChangeDisplayModeException;
-import com.alegria2d.base.graphics.exception.UnableToOpenWindowException;
-import com.alegria2d.exception.PrematureCallException;
+import com.alegria2d.core.driver.graphics.DisplayMode;
+import com.alegria2d.core.driver.graphics.Renderer;
+import com.alegria2d.core.driver.graphics.Screen;
+import com.alegria2d.core.driver.graphics.exception.UnableToChangeDisplayModeException;
+import com.alegria2d.core.driver.graphics.exception.UnableToOpenWindowException;
+import com.alegria2d.core.exception.PrematureCallException;
 
 public class OglScreen implements Screen {
    private Renderer renderer = null;

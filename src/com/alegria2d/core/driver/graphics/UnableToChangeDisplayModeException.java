@@ -20,28 +20,27 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alegria.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alegria2d.base;
+package com.alegria2d.core.driver.graphics;
 
-import com.alegria2d.base.graphics.DisplayModeFinder;
-import com.alegria2d.base.graphics.Screen;
+import com.alegria2d.core.exception.AlegriaException;
 
 /**
- * This class is able to construct all basic Alegria structures, and act as the basic entry-point for an Alegria Driver.
+ * This exception is called when a change to the display mode was attempted, but failed.
  * 
  * @author Vinicius G. Mendonca
  */
-public interface DriverFactory {
-   /**
-    * Creates a screen
-    * 
-    * @return The new screen
-    */
-   Screen newScreen();
-
-   /**
-    * Creates a new Display Mode Finder
-    * 
-    * @return The new display mode finder
-    */
-   DisplayModeFinder newDisplayModeFinder();     
+public class UnableToChangeDisplayModeException extends AlegriaException {
+   private static final long serialVersionUID = 4575081153155799406L;
+   
+   private DisplayMode desired;
+   
+   public UnableToChangeDisplayModeException(DisplayMode desired, Throwable cause)
+   {
+      super("Unable to change display mode to " + desired.toString(), cause);
+      this.desired = desired;
+   }
+   
+   public DisplayMode getDesiredDisplayMode() {
+      return desired;
+   }
 }
