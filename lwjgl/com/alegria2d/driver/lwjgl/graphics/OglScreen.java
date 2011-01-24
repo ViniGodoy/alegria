@@ -39,8 +39,8 @@ import org.newdawn.slick.opengl.LoadableImageData;
 import com.alegria2d.core.driver.graphics.DisplayMode;
 import com.alegria2d.core.driver.graphics.Renderer;
 import com.alegria2d.core.driver.graphics.Screen;
-import com.alegria2d.core.driver.graphics.exception.UnableToChangeDisplayModeException;
-import com.alegria2d.core.driver.graphics.exception.UnableToOpenWindowException;
+import com.alegria2d.core.driver.graphics.UnableToChangeDisplayModeException;
+import com.alegria2d.core.driver.graphics.UnableToOpenWindowException;
 import com.alegria2d.core.exception.PrematureCallException;
 
 public class OglScreen implements Screen {
