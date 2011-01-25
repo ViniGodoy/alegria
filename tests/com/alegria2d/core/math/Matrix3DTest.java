@@ -66,6 +66,23 @@ public class Matrix3DTest {
    }
 
    @Test
+   public void equals() {
+      Matrix3D other = new Matrix3D(matrix3d);
+      assertTrue(matrix3d.equals(matrix3d));
+      assertFalse(matrix3d.equals("Other class"));
+      assertTrue(matrix3d.equals(other));
+      other.set(0, 0, 1.1f);
+      assertFalse(matrix3d.equals(other));
+   }
+
+   @Test
+   public void hashCodeTest() {
+      Matrix3D copy = new Matrix3D(matrix3d);
+      assertEquals(copy.hashCode(), matrix3d.hashCode());
+      assertFalse(other.hashCode() == matrix3d.hashCode());
+   }
+
+   @Test
    public void constructorFloatMatrix() {
       float[][] matrix = {
             { 1, 2, 3 },
