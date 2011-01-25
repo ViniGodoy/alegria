@@ -638,6 +638,12 @@ public class Matrix3D implements Cloneable {
       return true;
    }
 
+   @Override
+   public String toString() {
+      return String.format("%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f ",
+            getA(), getB(), getC(), getD(), getE(), getF(), getG(), getH(), getK());
+   }
+
    /**
     * Represents a row in this matrix.
     * 
