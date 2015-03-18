@@ -1,0 +1,1 @@
+The objective of this project is to create a hardware acellerated 2D game api, with modern game development techniques such as SceneManagers, spatial sound, particle engines, multilayering, and so forth.
